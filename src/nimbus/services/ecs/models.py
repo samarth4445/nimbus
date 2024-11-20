@@ -2,8 +2,8 @@ from nimbus.utils import ClassUtility
 from nimbus.services import constants as Constants
 
 class ContainerDefinition:
-    def __init__(self, image, container_name=None) -> None:
-        self.name = container_name
+    def __init__(self, image, name=None) -> None:
+        self.name = name
         self.image = image
         self.cpu = 0
         self.portMappings = []
@@ -20,13 +20,13 @@ class ContainerDefinition:
     
 class TaskDefinition:
     def __init__(self, **kwargs):
-        self.containerDefinitions = [kwargs.get('container_definition')]
+        self.containerDefinitions = [ContainerDefinition(**kwargs.get('containerDefinitions'))]
         self.cpu = kwargs.get('cpu')
         self.memory = kwargs.get('memory')
-        self.family = kwargs.get('family_name')
+        self.family = kwargs.get('family')
         self.requiresCompatibilities = None
-        self.exectionRoleArn = kwargs.get('execution_role_arn')
-        self.networkMode = kwargs.get('network_mode')
+        self.executionRoleArn = kwargs.get('executionRoleArn')
+        self.networkMode = kwargs.get('networkMode')
 
     def to_dict(self):
         return ClassUtility.to_dict(self)

@@ -1,5 +1,5 @@
 import enum
 
 class ServiceEnum(enum.Enum):
-    ECS = "ECS"
-    VPC = "VPC"
+    ECS = "ecs"
+    VPC = "vpc"

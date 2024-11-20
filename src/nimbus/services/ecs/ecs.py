@@ -6,7 +6,7 @@ from nimbus.services.ecs import TaskDefinition, NetworkConfiguration
 class ElasticContainerService:
     def __init__(self, cluster_name: str, launch_type: str) -> None:
         self.cluster_name = cluster_name
-        self.client = boto3.client(ServiceEnum.ECS.value, region_name=Constants.AWS_REGION)
+        self.client = boto3.client(ServiceEnum.ECS.value, region_name=Constants.REGION_NAME)
         self.launch_type = launch_type
 
     def create_cluster(self):
