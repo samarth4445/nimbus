@@ -23,7 +23,7 @@ class TaskDefinition:
         self.containerDefinitions = [ContainerDefinition(**kwargs.get('containerDefinitions'))]
         self.cpu = kwargs.get('cpu')
         self.memory = kwargs.get('memory')
-        self.family = kwargs.get('family')
+        self.family = kwargs.get('family') # PROJECTNAME_USER_ID
         self.requiresCompatibilities = None
         self.executionRoleArn = kwargs.get('executionRoleArn')
         self.networkMode = kwargs.get('networkMode')
