@@ -69,4 +69,7 @@ class ElasticContainerService:
     def describe_tasks(self):
         task_arns = self.client.list_tasks(cluster=self.cluster_name).get('taskArns', [])
         response = self.client.describe_tasks(cluster=self.cluster_name, tasks=task_arns)
+        if response['ResponseMetadata']['HTTPStatusCode'] != 200:
+            self.logger.error(f"Failed to get description tasks of cluster {self.cluster_name}")
+            raise Exception(f"Failed to get description tasks of cluster {self.cluster_name}")
         return response
